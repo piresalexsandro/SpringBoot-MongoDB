@@ -1,6 +1,7 @@
 package com.alpires.springbootmongodb.recursos;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alpires.springbootmongodb.DTO.UsuarioDTO;
 import com.alpires.springbootmongodb.dominio.Usuario;
 import com.alpires.springbootmongodb.servicos.ServicoUsuario;
 
@@ -33,12 +35,14 @@ public class RecusoUsuario {   // controlador REST acessa o servico ServicoUsuar
 	//@RequestMapping(method=RequestMethod.GET)
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> findAll(){
+	public ResponseEntity<List<UsuarioDTO>> findAll(){
 		List<Usuario> usuarios = servico.findAll();
+		List<UsuarioDTO> usuariosDTO = usuarios.stream().map(objUsu -> new UsuarioDTO(objUsu))
+				.collect(Collectors.toList());
 		
 		// instancia do ResponseEntity<>
 		// estas informacoes iremos ver no POSTMAN
-		return ResponseEntity.ok().body(usuarios);
+		return ResponseEntity.ok().body(usuariosDTO);
 	}
 
 }
