@@ -68,4 +68,11 @@ public class UserResource {   // controlador REST acessa o service UserService
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@RequestMapping(value="/(id)", method=RequestMethod.DELETE)
+	//@PathVariable faz com que o id da url seja o mesmo do argumento
+	public ResponseEntity<Void> delete(@PathVariable String id) {    
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+	
 }
