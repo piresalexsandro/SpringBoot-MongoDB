@@ -1,18 +1,18 @@
-package com.alpires.springbootmongodb.dominio;
+package com.alpires.springbootmongodb.domain;
 
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/** @Document(collection="usuario") indica que e uma coleção do mongodb
+/** @Document(collection="user") indica que e uma coleção do mongodb
  * @Document tambem funciona
  * @author Alexsandro Pires
  *
  */
 
-@Document(collection="usuario")
-public class Usuario implements Serializable {
+@Document(collection="user")
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,10 +21,10 @@ public class Usuario implements Serializable {
 	private String nome;
 	private String email;
 
-	public Usuario() {
+	public User() {
 	}
 
-	public Usuario(String id, String nome, String email) {
+	public User(String id, String nome, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -71,7 +71,7 @@ public class Usuario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

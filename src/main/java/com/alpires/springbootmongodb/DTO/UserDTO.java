@@ -2,9 +2,9 @@ package com.alpires.springbootmongodb.DTO;
 
 import java.io.Serializable;
 
-import com.alpires.springbootmongodb.dominio.Usuario;
+import com.alpires.springbootmongodb.domain.User;
 
-public class UsuarioDTO implements Serializable{
+public class UserDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 		
@@ -12,10 +12,10 @@ public class UsuarioDTO implements Serializable{
 	private String nome;
 	private String email;
 
-	public UsuarioDTO() {
+	public UserDTO() {
 	}
 
-	public UsuarioDTO(Usuario obj) {
+	public UserDTO(User obj) {
 		id = obj.getId();
 		nome = obj.getNome();
 		email = obj.getEmail();
